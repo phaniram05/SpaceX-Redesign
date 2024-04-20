@@ -14,6 +14,8 @@ body {
     color: var(--pure);
     /* height: 4000px; */
     background: var(--primary);
+    margin: 0px;
+    padding: 0px;
 }
 
 header {
@@ -186,7 +188,7 @@ header nav .nav-right .search > div img {
 
 .hero .cta .left-section {
     padding-top: 0 60px 0 30px;
-    margin-left: 120px;
+    margin-left: 160px;
 }
 
 .hero .cta .right-section {

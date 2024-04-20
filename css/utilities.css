@@ -1,7 +1,7 @@
 .container {
-    width: 1400px;
-    max-width: 100%;
-    margin: 0 auto 0 160px; /* top, bottom: 0px */
+    width: auto;
+    max-width: 90%;
+    margin: 0; /* top, bottom: 0px */
     /* border: 2px solid var(--pure); */
 }
 
