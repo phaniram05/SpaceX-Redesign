@@ -8,16 +8,16 @@
 .btn {
     padding: 8px 30px;
     border: 1px solid transparent;
-    border-radius: 60px;
+    border-radius: 50px;
     outline: none;
     cursor: pointer;
-    font-size: 16px;            
+    font-size: 16px;
 }
 
 .btn-primary {
     color: var(--dark);
     background: var(--pure);
-    /* transition: all .5s ease-in-out; */
+    transition: all .5s ease-in-out;
 }
 
 .btn-primary:hover {
@@ -26,14 +26,17 @@
     border-color: var(--pure);
 }
 
-.btn-secondary {
+section.rocket .block .btn-secondary {
     color: var(--pure);
     background: transparent;
     border-color: var(--pure);
-    /* transition: all .5s ease-in-out;  */
  }
- 
- .btn-secondary:hover {
-    color: var(--dark);
+
+section.rocket .block .btn-secondary:hover {
     background: var(--pure);
+    color: var(--dark);
  }
+
+section.rocket .block .btn-secondary {
+    transition: all .5s ease-in-out;
+}
