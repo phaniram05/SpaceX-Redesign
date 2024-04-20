@@ -1,0 +1,543 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700&display=swap');
+@import './variables.css';
+@import './utilities.css';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--pure);
+    /* height: 4000px; */
+    background: var(--primary);
+}
+
+header {
+    /* top left earth is more darker, bottom right is less */
+    background: linear-gradient(135deg,rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2)), 
+                url('../img/sunrise.jpg'); /*relative path*/
+    min-height: 100vh;
+    background-size: cover;
+}
+
+header nav {
+    padding: 20px 40px 20px 100px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center; /*vertical alignment*/
+    border-bottom: 1px solid var(--gray);
+}
+
+header nav .nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header nav .nav-right a {
+    text-decoration: none; /* removes hyperlink style */
+    color: var(--pure);
+    margin-right: 30px;
+    position: relative;
+}
+
+/* content after anchor tag */
+header nav .nav-right a:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -30px;
+    width: 0; /* by default */
+    height: 2px;
+    background-color: var(--pure);
+    transition: width 0.3s ease-in-out; /* we need transition over width of home*/
+}
+
+header nav .nav-right a:hover:after {
+    width: 70%;
+}
+
+/* anchor tag whose class is active - default width 70% */
+header nav .nav-right a.active:after {
+    width: 70%;
+}
+
+header nav .nav-right .search > div {
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    padding: 10px 15px; /* top, bottom: 10px */
+    border-radius: 50px;
+}
+
+header nav .nav-right .search > div input {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: white;
+}
+
+header nav .nav-right .search > div img {
+    padding-right: 16px;
+}
+
+/* socials */
+
+.social div {
+    border: 2px solid var(--pure);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    
+    /* animation: icons-move 1s ease-in-out forwards; */
+    /* Using this all comes at once with 1 sec delay. But we need one by one with some delay. We need to use javascript for this.
+
+    Refer app.js file. */
+
+    opacity: 0;
+}
+
+/* We also need social icons animation on top of '.social div'. Use keyframes below .social div 
+*/
+
+@keyframes icons-move {
+
+    from{
+        transform: translateX(-100px); /* Out of screen left side */
+    }
+    to{
+        transform: translateX(0px); /* current position */
+        opacity: 1;
+    }
+}
+
+
+/* From where svg is coming? Inspect over icon 
+   Inspect: svg > path > 'fill' property 
+*/
+.social svg path {
+    fill: var(--pure);
+}
+
+/* upon hover change icon color to dark */
+.social div:hover svg path {
+    fill: var(--dark);
+    transition: all 0.5s ease-in-out;   
+}
+
+/* upon hover change div background to white */
+.social div:hover {
+    background: var(--pure);
+}
+
+/* social icons */
+/* whenever vertical alignment is req, set 2 props:
+   align-items: center 
+   justify-content: center
+*/
+
+.hero {
+    position: relative;
+}
+
+.social {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-right: 1px solid var(--gray);
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+}
+
+/* hero section */
+
+.hero .cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: calc(100vh - 80px); /* req height - nav bar height */
+    /* border: 2px solid var(--pure); */
+}
+
+.hero .cta h1 {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+
+.hero .cta > div {
+    flex: 1; /* makes all the divs within same width */
+}
+
+.hero .cta .left-section {
+    padding-top: 0 60px 0 30px;
+    margin-left: 120px;
+}
+
+.hero .cta .right-section {
+    height: 70vh;
+    transform: rotate(20deg); /* astronaut default rotation */
+    animation: astro-animation 12s ease-in-out infinite alternate;
+}
+
+/* illusion => Y translate rotate and make it small */
+@keyframes astro-animation {
+    50%{
+        transform: translateY(100px) rotate(-30deg) scale(0.8);
+    }
+
+}
+
+/* I made it on my own */
+/* .hero .cta .left-section > button {
+    width: 160px;
+    height: 30px;
+    border-radius: 30px;
+    background: var(--pure);
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: none;
+    border: 2px solid var(--pure);
+} */
+
+section.strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: var(--dark);
+    padding: 50px 0;
+}
+
+/* rocket */
+
+.container-new {
+    background: var(--primary);
+    padding: 0px 120px;
+}
+
+.left-block {
+    margin-left: 120px;
+}
+
+section.rocket {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr; /* we need small width for rocket body */
+    grid-gap: 80px;
+    padding: 100px 120px;
+}
+
+section.rocket .rocket-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Hack to remove gap between rocket parts */
+section.rocket .rocket-body > span {
+    font-size: 0;
+    position: relative; /* req for span:after line animation */
+}
+
+section.rocket .rocket-body > span img {
+    width: 100%
+}
+
+section.rocket .block {
+    width: 70%;
+}
+
+section.rocket .block h1 {
+    font-size: 32px;
+    font-weight: 400;
+}
+
+section.rocket .block .with-underline {
+    position: relative;
+    margin-bottom: 38px;
+}
+
+section.rocket .block .with-underline:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+    display: block;
+    width: 38%;
+    height: 2px;
+    background: var(--pure);
+}
+
+/* select only that heading h1 with class '.with-underline' */ 
+section.rocket .block h1.with-underline:before {
+    width: 20%;
+}
+
+section.rocket p {
+    line-height: 1.6;
+}
+
+section.rocket .block h2 {
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+section.rocket .block.payload {
+    padding-top: 130px;
+}
+
+section.rocket .block.payload h2 {
+    padding-left: 80px;
+}
+
+section.rocket .block.dragon {
+    padding-top: 120px;
+}
+
+section.rocket .block button {
+    margin-top: 30px;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+section.rocket .block.composite {
+    padding-top: 60px;
+} 
+
+section.rocket .block.first-stage {
+    padding-top: 60px;
+}
+
+section.rocket .block.capacity {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+}
+
+section.rocket .block.capacity > div:first-child {
+    margin-right: 40px;
+}
+
+section.rocket .block.capacity h4 {
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+section.rocket .block.capacity h6 {
+    font-size: 40px;
+    font-weight: 400;
+}
+
+section.rocket .block.capacity h6 small {
+    font-size: 12px;
+}
+
+
+section.rocket .block.second-stage {
+    padding-top: 60px;
+}
+
+section.rocket .right-block .block.capacity {
+    padding-top: 120px;
+}
+
+section.rocket .right-block .block.capacity.single{
+    padding-top: 40px;
+}
+
+section.rocket .right-block .block.engines {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+section.rocket .right-block .block.engines img {
+    width: 180px
+}
+
+section.rocket .right-block .block.marine {
+    padding-top: 100px;
+    width: 70%;
+}
+
+section.rocket .right-block .block.marine h2 {
+    font-size: 14px;
+    padding-left: 100px;
+    margin-bottom: 26px;
+}
+
+section.rocket .right-block .floating-graphics {
+    position: sticky;
+    float: right;
+    top: 60px;
+    margin-right: -80px;
+}
+
+section.rocket .right-block .floating-graphics img {
+    height: 350px;
+}
+
+
+/* lines animation selecting lines */
+section.rocket .rocket-body span:after, section.rocket .rocket-body span:nth-child(3):before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 0px; /* default line width is set to 0 */
+    background-color: var(--pure);
+    transition: width 1s ease-in-out;
+}
+
+section.rocket .rocket-body span:nth-child(1):after {
+    bottom: 16px;
+    left: 96%;
+    /* width: 120px */
+}
+
+section.rocket .rocket-body span:nth-child(2):after {
+    bottom: 62%;
+    right: 100%;
+    /* width: 180px; */
+}
+
+section.rocket .rocket-body span:nth-child(3):after {
+    bottom: 58%;
+    right: 90%;
+    /* width: 200px; */
+}
+
+/* 4th line */
+
+section.rocket .rocket-body span:nth-child(3):before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 2px;
+    /* width: 150px;  */
+    background-color: var(--pure);
+    /* position */
+    bottom: 35.5%;
+    left: 90%;
+    transition: width 1s ease-in-out;
+}
+
+
+/* 
+width can be set in multiple ways:
+1. setting width property in css
+2. setting animated width using javascript -- We are taking this approach.
+*/
+
+section.rocket .rocket-body span.active:nth-child(1):after {
+    width: 120px;
+}
+
+section.rocket .rocket-body span.active:nth-child(2):after {
+    width: 180px;
+}
+
+section.rocket .rocket-body span.active:nth-child(3):after {
+    width: 200px;
+}
+
+section.rocket .rocket-body span.active:nth-child(3):before {
+    width: 150px;
+}
+
+
+/* jump animation of rocket head */
+section.rocket .rocket-body span.active:nth-child(1) {
+    animation: jump 1s ease-in-out forwards;
+}
+
+
+@keyframes jump {
+    50%{
+        transform: translateY(-50px);
+    }
+}
+
+
+/* footer */
+
+footer {
+    background: var(--dark);
+    padding: 60px 0;
+}
+
+footer > div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+footer .copyright img {
+    height: 30px;
+}
+
+footer .copyright span {
+    font-size: 12px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+footer h1 {
+    font-size: 18px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+footer h1:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--pure);
+}
+
+footer ul {
+    list-style-type: none;
+}
+
+footer ul li:nth-child(even) {
+    margin: 10px 0;
+ }
+
+ footer ul li a {
+    color: var(--mild);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all .3s ease-in-out;
+}
+
+footer ul li a:hover {
+    color: var(--pure);
+ }
+
+ footer .footer-socials a {
+    margin-right: 20px;
+    font-size: 22px;
+    color: var(--mild);
+}
+
+footer .footer-socials a:hover {
+    color: var(--pure);
+}
